@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "build:assist": "vue-cli-service build --dest dist/assistant src/assistant/main.js",
+    "build:ez": "vue-cli-service build --dest dist/grader src/grader/main.js",
+    "build:all": "npm run build:assist && npm run build:ez",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
