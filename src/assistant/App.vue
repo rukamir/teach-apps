@@ -28,7 +28,7 @@ export default {
     };
   },
   created() {
-    this.answers = ["a","a","a","a","a","a","a","a"];
+    this.answers = ["a","e","j","k","a"];
   },
   methods: {
     SetPlayMode() {
