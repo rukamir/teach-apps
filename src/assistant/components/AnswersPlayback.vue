@@ -2,7 +2,9 @@
   <div>
     <h2>Playback</h2>
     <h2>{{ ScreenDisplay() }}</h2>
-    <b-button variant="primary" @click="play()">Play</b-button>
+    <b-progress :value="indexOfCurrent" :max="allAnswers.length -1"></b-progress>
+    <input type="range" min="0.9  " max="1.5" step="0.05" v-model="rate">
+    <b-button variant="primary" @click="play()" :disabled="this.atEnd">Play</b-button>
     <b-button variant="primary" @click="restart()">Restart</b-button>
   </div>
 </template>
@@ -19,8 +21,10 @@ export default {
       playing: false,
       allAnswers: [''],
       indexOfCurrent: 0,
+      rate: 1.0,
       utterance: null,
       synth: null,
+      atEnd: false,
     };
   },
   created() {
@@ -44,6 +48,7 @@ export default {
     restart() {
       this.playing = false;
       this.indexOfCurrent = 0;
+      this.atEnd = false;
     },
     ScreenDisplay() {
       var question = this.indexOfCurrent;
@@ -51,15 +56,16 @@ export default {
       return `${question} ${answer}`;
     },
     SetNextSpoken() {
-      const atEnd = !(this.indexOfCurrent < this.allAnswers.length - 1);
-      this.playing = !atEnd && this.playing;
+      this.atEnd = !(this.indexOfCurrent < this.allAnswers.length - 1);
+      this.playing = !this.atEnd && this.playing;
       if (this.playing) {
-        this.indexOfCurrent += !atEnd ? 1 : 0;
+        this.indexOfCurrent += !this.atEnd ? 1 : 0;
         this.utterance.text = `${this.indexOfCurrent} ${this.allAnswers[this.indexOfCurrent]}`;
       }
     },
     Speak(utterance) {
       if (this.playing) {
+        utterance.rate = this.rate;
         this.synth.speak(utterance);
       }
     },
