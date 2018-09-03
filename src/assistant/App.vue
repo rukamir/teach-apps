@@ -2,21 +2,49 @@
   <div id="app">
     <div id="top-bar">
       <h2>top bar</h2>
+      <b-button @click=SetPlayMode()>Play</b-button>
     </div>
     <div id="main-card">
-      <AnswersInput />
+      <AnswersInput v-if=!playback />
+      <AnswersPlayback v-else :answers="GetAnswers"></AnswersPlayback>
     </div>
   </div>
 </template>
 
 <script>
-import AnswersInput from './components/AnswersInput.vue'
+import AnswersInput from './components/AnswersInput.vue';
+import AnswersPlayback from './components/AnswersPlayback.vue';
 
 export default {
   name: 'app',
   components: {
     AnswersInput,
-  }
+    AnswersPlayback,
+  },
+  data() {
+    return {
+      playback: false,
+      answers: [],
+    };
+  },
+  created() {
+    this.answers = ["a","a","a","a","a","a","a","a"];
+  },
+  methods: {
+    SetPlayMode() {
+      this.playback = !this.playback;
+      // eslint-disable-next-line
+      console.log(this.playback);
+    },
+    SetAnswers(answers) {
+      this.answers = answers;
+      // eslint-disable-next-line
+      console.log("answers set", this.answers);
+    },
+    GetAnswers() {
+      return this.answers;
+    },
+  },
 }
 </script>
 

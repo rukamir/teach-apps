@@ -4,7 +4,7 @@
       <h2>Questions</h2>
     </div>
     <div id="number-display" class="body-card">
-      <scroll-picker class="testtest" v-model="current" :options="ops"></scroll-picker>
+      <b-form-select v-model="current" :options="ops" />
     </div>
     <div @click=IncreaseOps() id="answer-selector" class="bottom-card">
       abcd
@@ -23,26 +23,28 @@
 </style>
 
 <script>
-import {ScrollPicker, ScrollPickerGroup} from 'vue-scroll-picker';
 
 export default {
   name: "Answersinput",
+  props: ["SetAnswers"],
   components: {
-    ScrollPicker,
-    ScrollPickerGroup,
   },
   data() {
     return {
       current: 1,
       ops: [1,2,3,4],
+      selections: []
     };
   },
   mounted() {
   },
   methods: {
     IncreaseOps() {
+      // eslint-disable-next-line
       console.log("adding stuff");
-      this.ops.push(this.ops.length + 1);
+      const next = this.ops.length + 1;
+      this.ops.push(next);
+      this.current = next;
     },
   }
 }
