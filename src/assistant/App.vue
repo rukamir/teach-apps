@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="top-bar">
-      <h2>top bar</h2>
-      <b-button @click=SetPlayMode()>Play</b-button>
+      <div id="center-text">top bar</div>
+      <b-button class="top-button" @click=SetPlayMode()>Play</b-button>
     </div>
     <div id="main-card">
       <AnswersInput v-if=!playback :answers="answers" />
@@ -10,6 +10,19 @@
     </div>
   </div>
 </template>
+
+<style>
+#top-bar {
+  margin: auto;
+}
+#center-text {
+  width: 20%;
+  display: inline-block;
+}
+.top-button {
+ min-width: 2em;
+}
+</style>
 
 <script>
 import AnswersInput from './components/AnswersInput.vue';

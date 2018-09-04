@@ -4,7 +4,10 @@
       <h2>Questions</h2>
     </div>
     <div id="number-display" class="body-card">
-      <b-form-select v-model="current" :options="GetNumberOfInputs" />
+      <div id="number-display-group">
+        <span>Current: </span>
+        <b-form-select id="number-selector" v-model="current" :options="GetNumberOfInputs" />
+      </div>
     </div>
     <div id="answer-selector" class="bottom-card">
       <AnswerChoices :GetSelection="SelectedAnswer" :selected="answers[current - 1]"></AnswerChoices>
@@ -13,6 +16,18 @@
 </template>
 
 <style>
+#number-display-group {
+  margin: auto;
+  font-size: 2em;
+  max-width: 15%;
+  padding: 0.2em;
+}
+#number-selector {
+  border: 0.1em;
+  border-style: solid;
+  font-size: 1.5em;
+  height: 1.6em;
+}
 .testtest {
   height: 7em !important;
   background-color: aqua;

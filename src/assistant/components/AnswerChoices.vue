@@ -1,8 +1,6 @@
 <template>
   <div id="choice-group">
-    <div class="input-section" v-for="item in types.type1" :key="item">
-      <div :class="{ 'input-button': true, 'input-selected': selected == item.toUpperCase() }" @click="GetSelection" :value="item.toUpperCase()">{{ item.toUpperCase() }}</div>
-    </div>
+    <div v-for="item in types.type1" :key="item" :class="{ 'input-button': true, 'input-selected': selected == item.toUpperCase() }" @click="GetSelection" :value="item.toUpperCase()">{{ item.toUpperCase() }}</div>
   </div>
 </template>
 
@@ -10,8 +8,6 @@
 #choice-group {
   margin: auto;
   width: 4em;
-}
-.input-section {
 }
 .input-selected {
   background-color: red !important;
