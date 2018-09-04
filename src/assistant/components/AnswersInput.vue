@@ -19,14 +19,18 @@
 #number-display-group {
   margin: auto;
   font-size: 2em;
-  max-width: 15%;
   padding: 0.2em;
+  color: blueviolet;
 }
 #number-selector {
   border: 0.1em;
   border-style: solid;
+  border-radius: 20%;
+  border-color: blueviolet;
   font-size: 1.5em;
-  height: 1.6em;
+  color: blueviolet;
+  height: 1.5em;
+  width: 1.5em;
 }
 .testtest {
   height: 7em !important;

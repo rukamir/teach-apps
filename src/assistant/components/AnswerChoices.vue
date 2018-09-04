@@ -1,14 +1,10 @@
 <template>
-  <div id="choice-group">
+  <div>
     <div v-for="item in types.type1" :key="item" :class="{ 'input-button': true, 'input-selected': selected == item.toUpperCase() }" @click="GetSelection" :value="item.toUpperCase()">{{ item.toUpperCase() }}</div>
   </div>
 </template>
 
 <style>
-#choice-group {
-  margin: auto;
-  width: 4em;
-}
 .input-selected {
   background-color: red !important;
 }
@@ -18,10 +14,12 @@
   border-color: blueviolet;
   border-radius: 50%;
   background-color: rgb(232, 207, 255);
-  margin: 0.2em;
+  margin: auto;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
   width: 2em;
   height: 2em;
-  font-size: 4em;
+  font-size: 2.5em;
 }
 </style>
 
