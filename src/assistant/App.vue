@@ -5,7 +5,7 @@
       <b-button @click=SetPlayMode()>Play</b-button>
     </div>
     <div id="main-card">
-      <AnswersInput v-if=!playback :SetAllAnswers="SetAnswers" />
+      <AnswersInput v-if=!playback :answers="answers" />
       <AnswersPlayback v-else :answers="GetAnswers"></AnswersPlayback>
     </div>
   </div>
@@ -28,7 +28,7 @@ export default {
     };
   },
   created() {
-    this.answers = ["a","e","j","k","a"];
+    this.answers = [];
   },
   methods: {
     SetPlayMode() {
