@@ -5,7 +5,7 @@
       <b-button @click=SetPlayMode()>Play</b-button>
     </div>
     <div id="main-card">
-      <AnswersInput v-if=!playback />
+      <AnswersInput v-if=!playback :SetAllAnswers="SetAnswers" />
       <AnswersPlayback v-else :answers="GetAnswers"></AnswersPlayback>
     </div>
   </div>
