@@ -4,11 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "build:assist": "vue-cli-service build --dest dist/assistant src/assistant/main.js",
+    "build:ez": "vue-cli-service build --dest dist/grader src/grader/main.js",
+    "build:all": "npm run build:assist && npm run build:ez",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "vue": "^2.5.17",
+    "vue-scroll-picker": "^0.1.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",
