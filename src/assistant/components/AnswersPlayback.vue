@@ -1,14 +1,26 @@
 <template>
-  <div>
-    <h2>Playback</h2>
-    <h2>{{ ScreenDisplay() }}</h2>
-    <b-progress :value="indexOfCurrent" :max="allAnswers.length -1"></b-progress>
-    <input type="range" min="0.9  " max="1.5" step="0.05" v-model="rate">
-    <b-button variant="primary" @click="play()" :disabled="this.atEnd">Play</b-button>
-    <b-button variant="primary" @click="restart()">Restart</b-button>
+  <div id="playback-main">
+    <div id="display-section">
+      <h2 class="top-card">Playback</h2>
+      <h2>{{ ScreenDisplay() }}</h2>
+    </div>
+    <div>
+      <b-progress :value="indexOfCurrent" :max="allAnswers.length -1"></b-progress>
+    </div>
+    <div>
+      <input type="range" min="0.9  " max="1.5" step="0.05" v-model="rate">
+      <b-button variant="primary" @click="play()" :disabled="this.atEnd">Play</b-button>
+      <b-button variant="primary" @click="restart()">Restart</b-button>
+    </div>
   </div>
 </template>
 
+<style>
+
+#playback-main {
+  max-width: 700px;
+}
+</style>
 
 <script>
 export default {

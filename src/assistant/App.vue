@@ -64,7 +64,7 @@ export default {
 <style>
 #top-bar {
   border: solid;
-  border-width: 0em 0em 0.1em 0em;
+  border-width: 0px 0px 7px 0px;
   border-color: #e7e7e7;
   background-color: #f6f6f6;
   margin-bottom: 1em;
@@ -79,20 +79,20 @@ export default {
   border: solid;
   border-radius: 15px 15px 0px 0px;
   border-color: blueviolet;
-  border-width: 0.3em;
+  border-width: 7px;
   color: blueviolet;
   background-color: rgb(232, 207, 255);
 }
 .body-card {
   border: solid;
   border-color: blueviolet;
-  border-width: 0em 0.3em 0em 0.3em;
+  border-width: 0px 7px 0px 7px;
 }
 .bottom-card {
   border: solid;
   border-radius: 0px 0px 15px 15px;
   border-color: blueviolet;
-  border-width: 0.3em;
+  border-width: 7px;
   color: blueviolet;
 }
 #app {
