@@ -11,19 +11,6 @@
   </div>
 </template>
 
-<style>
-#top-bar {
-  margin: auto;
-}
-#center-text {
-  width: 20%;
-  display: inline-block;
-}
-.top-button {
- min-width: 2em;
-}
-</style>
-
 <script>
 import AnswersInput from './components/AnswersInput.vue';
 import AnswersPlayback from './components/AnswersPlayback.vue';
@@ -75,6 +62,9 @@ export default {
   max-width: 50%;
   min-width: 350px;
 }
+.heading-card {
+  font-size: 1.7em;
+}
 .top-card {
   border: solid;
   border-radius: 15px 15px 0px 0px;
@@ -94,6 +84,10 @@ export default {
   border-color: blueviolet;
   border-width: 7px;
   color: blueviolet;
+  margin-bottom: 1em;
+}
+.topless-card {
+  border-top-width: 0px;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -101,5 +95,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+#top-bar {
+  margin: auto;
+}
+#center-text {
+  width: 20%;
+  display: inline-block;
+}
+.top-button {
+ min-width: 2em;
 }
 </style>
