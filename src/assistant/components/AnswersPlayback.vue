@@ -2,7 +2,7 @@
   <div id="playback-main">
     <div id="display-section">
       <div class="top-card heading-card">Playback</div>
-      <div class="bottom-card topless-card">{{ ScreenDisplay() }}</div>
+      <div class="bottom-card topless-card playback-display">{{ ScreenDisplay() }}</div>
     </div>
     <div>
       <div class="top-card heading-card">Progress</div>
@@ -14,30 +14,48 @@
       <div class="top-card heading-card">Controls</div>
       <div class="bottom-card topless-card">
         <div>
-          <input type="range" min="0.9  " max="1.5" step="0.05" v-model="rate">
+          <span>Speed: </span><input type="range" min="0.9  " max="1.5" step="0.05" v-model="rate">
         </div>
-        <div>
-          <b-button variant="primary" @click="play()" :disabled="this.atEnd">Play</b-button>
-          <b-button variant="primary" @click="restart()">Restart</b-button>
+        <div v-if=!atEnd>
+          <span @click="play()">
+            <v-icon v-if=!playing name="regular/play-circle" scale="4" label="Play" />
+            <v-icon v-else name="regular/pause-circle" scale="4" label="Play" />
+          </span>
+          <span @click="restart()">
+            <v-icon name="regular/stop-circle" scale="4" label="Stop" />
+          </span>
         </div>
+      <div v-else>
+        <span @click="restartAndPlay()">
+          <v-icon name="regular/play-circle" scale="4" label="Play" />
+        </span>
+      </div>
       </div>
     </div>
   </div>
 </template>
 
 <style>
-
+.playback-display {
+  font-size: 2em;
+}
 #playback-main {
   max-width: 700px;
 }
 </style>
 
 <script>
+import 'vue-awesome/icons/regular/play-circle.js';
+import 'vue-awesome/icons/regular/pause-circle.js';
+import 'vue-awesome/icons/regular/stop-circle.js';
+
 export default {
   name: "AnswersPlayback",
   props: [
     "answers"
   ],
+  components: {
+  },
   data() {
     return {
       playing: false,
@@ -71,6 +89,10 @@ export default {
       this.playing = false;
       this.indexOfCurrent = 0;
       this.atEnd = false;
+    },
+    restartAndPlay() {
+      this.restart();
+      this.play();
     },
     ScreenDisplay() {
       var question = this.indexOfCurrent;
