@@ -11,15 +11,15 @@
     </div>
     <div class="bottom-card">
       <div id="answer-selector">
-        <AnswerChoices :GetSelection="SelectedAnswer" :selected="answers[current - 1]"></AnswerChoices>
+        <AnswerChoices :GetSelection="SelectedAnswer" :selected="answers[current - 1]" :choices=currentSelection></AnswerChoices>
       </div>
       <div id="choice-selector">
         <div class="top-card">
           <span>Choices</span>
         </div>
         <div class="bottom-card topless-card">
-          <div v-for="ops in selections" :key="ops">
-            Options: <span v-for="single in ops" :key="single">{{ single }}</span>
+          <div v-for="ops in selections" :key="ops[0]" @click="answerSelectorClicked(ops)">
+            Set: <span v-for="single in ops" :key="single">{{ single }}</span>
           </div>
         </div>
       </div>
@@ -76,6 +76,7 @@ export default {
   data() {
     return {
       current: 1,
+      currentSelection: ['a', 'b', 'c', 'd', 'e'],
       selections: [
         ['a', 'b', 'c', 'd', 'e'],
         ['f', 'g', 'h', 'i', 'j'],
@@ -94,6 +95,9 @@ export default {
 
       this.current += 1;
     },
+    answerSelectorClicked(e) {
+      this.currentSelection = e;
+    }
   },
   computed: {
     GetNumberOfInputs() {

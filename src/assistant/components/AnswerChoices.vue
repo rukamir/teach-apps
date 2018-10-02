@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="item in types.type1" :key="item" :class="{ 'input-button': true, 'input-selected': selected == item.toUpperCase() }" @click="GetSelection" :value="item.toUpperCase()">{{ item.toUpperCase() }}</div>
+    <div v-for="item in choices" :key="item" :class="{ 'input-button': true, 'input-selected': selected == item.toUpperCase() }" @click="GetSelection" :value="item.toUpperCase()">{{ item.toUpperCase() }}</div>
   </div>
 </template>
 
@@ -29,12 +29,10 @@ export default {
   props: [
     'GetSelection',
     'selected',
+    'choices',
   ],
   data() {
     return {
-      types: {
-        type1: ['a', 'b', 'c', 'd', 'e'],
-      },
     };
   },
 }
