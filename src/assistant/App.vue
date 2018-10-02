@@ -2,7 +2,8 @@
   <div id="app">
     <div id="top-bar">
       <div id="center-text">top bar</div>
-      <b-button class="top-button" @click=SetPlayMode()>Play</b-button>
+      <b-button v-if=playback class="top-button" @click=SetPlayMode()>Edit</b-button>
+      <b-button v-else class="top-button" @click=SetPlayMode()>Play</b-button>
     </div>
     <div id="main-card">
       <AnswersInput v-if=!playback :answers="answers" />
