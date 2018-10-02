@@ -9,13 +9,33 @@
         <b-form-select id="number-selector" v-model="current" :options="GetNumberOfInputs" />
       </div>
     </div>
-    <div id="answer-selector" class="bottom-card">
-      <AnswerChoices :GetSelection="SelectedAnswer" :selected="answers[current - 1]"></AnswerChoices>
+    <div class="bottom-card">
+      <div id="answer-selector">
+        <AnswerChoices :GetSelection="SelectedAnswer" :selected="answers[current - 1]"></AnswerChoices>
+      </div>
+      <div id="choice-selector">
+        <div class="top-card">
+          <span>Choices</span>
+        </div>
+        <div class="bottom-card topless-card">
+          <div v-for="ops in selections" :key="ops">
+            Options: <span v-for="single in ops" :key="single">{{ single }}</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
+#answer-selector {
+  width: 60%;
+  display: inline-block;
+}
+#choice-selector {
+  width: 40%;
+  display: inline-block;
+}
 #number-display-group {
   margin: auto;
   font-size: 2em;
@@ -56,7 +76,10 @@ export default {
   data() {
     return {
       current: 1,
-      selections: [],
+      selections: [
+        ['a', 'b', 'c', 'd', 'e'],
+        ['f', 'g', 'h', 'i', 'j'],
+      ],
       dropDownChoices: [],
     };
   },
@@ -78,6 +101,7 @@ export default {
         return ind + 1;
       });
       inputs.push(this.answers.length + 1);
+      // eslint-disable-next-line
       this.dropDownChoices = inputs;
       return this.dropDownChoices;
     },
