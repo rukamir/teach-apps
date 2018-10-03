@@ -104,7 +104,7 @@ export default {
       this.playing = !this.atEnd && this.playing;
       if (this.playing) {
         this.indexOfCurrent += !this.atEnd ? 1 : 0;
-        this.utterance.text = `${this.indexOfCurrent} ${this.allAnswers[this.indexOfCurrent]}`;
+        this.utterance.text = `${this.indexOfCurrent} ${this.allAnswers[this.indexOfCurrent].answer}`;
       }
     },
     Speak(utterance) {

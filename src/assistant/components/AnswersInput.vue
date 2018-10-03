@@ -124,6 +124,8 @@ export default {
     },
     GetSelected() {
       if (this.answers.length >= this.current) {
+        // todo: this really should be structured better
+        // eslint-disable-next-line
         this.currentSelection = this.answers[this.current - 1].selection;
         return this.answers[this.current - 1].answer;
       } else {
