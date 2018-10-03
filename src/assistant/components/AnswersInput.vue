@@ -18,7 +18,7 @@
           <span>Choices</span>
         </div>
         <div class="bottom-card topless-card">
-          <div v-for="ops in selections" :key="ops[0]" @click="answerSelectorClicked(ops)">
+          <div v-for="(ops, index) in selections" :key="index" @click="answerSelectorClicked(index)">
             Set: <span v-for="single in ops" :key="single">{{ single }}</span>
           </div>
         </div>
@@ -81,6 +81,7 @@ export default {
         ['a', 'b', 'c', 'd', 'e'],
         ['f', 'g', 'h', 'i', 'j'],
       ],
+      selectionIdx: 0,
       dropDownChoices: [],
     };
   },
@@ -99,15 +100,20 @@ export default {
         });
       }
 
+      const {
+        selections,
+      } = this;
+      this.selectionIdx = !this.selectionIdx ? 1 : 0;
+      this.currentSelection = selections[this.selectionIdx];
       this.current += 1;
     },
     answerSelectorClicked(e) {
-      this.currentSelection = e;
-    }
+      this.selectionIdx = e;
+      this.currentSelection = this.selections[e];
+    },
   },
   computed: {
     GetNumberOfInputs() {
-      console.log("input calculated")
       var inputs = this.answers.map((_, ind) => {
         return ind + 1;
       });
@@ -118,7 +124,7 @@ export default {
     },
     GetSelected() {
       if (this.answers.length >= this.current) {
-        console.log("index", this.current - 1)
+        this.currentSelection = this.answers[this.current - 1].selection;
         return this.answers[this.current - 1].answer;
       } else {
         return "";
