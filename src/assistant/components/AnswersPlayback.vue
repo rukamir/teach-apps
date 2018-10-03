@@ -97,7 +97,7 @@ export default {
     ScreenDisplay() {
       var question = this.indexOfCurrent;
       var answer = this.allAnswers[this.indexOfCurrent];
-      return `${question} ${answer}`;
+      return `${question} ${answer.answer}`;
     },
     SetNextSpoken() {
       this.atEnd = !(this.indexOfCurrent < this.allAnswers.length - 1);

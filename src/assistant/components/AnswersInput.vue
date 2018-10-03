@@ -11,7 +11,7 @@
     </div>
     <div class="bottom-card">
       <div id="answer-selector">
-        <AnswerChoices :GetSelection="SelectedAnswer" :selected="answers[current - 1]" :choices=currentSelection></AnswerChoices>
+        <AnswerChoices :GetSelection="SelectedAnswer" :selected="GetSelected" :choices=currentSelection></AnswerChoices>
       </div>
       <div id="choice-selector">
         <div class="top-card">
@@ -88,9 +88,15 @@ export default {
     SelectedAnswer(e) {
       const value = e.target.getAttribute('value');
       if (this.answers.length >= this.current) {
-        this.answers[this.current - 1] = value;
+        this.answers[this.current - 1] = {
+          answer: value,
+          selection: this.currentSelection,
+        };
       } else {
-        this.answers.push(value);
+        this.answers.push({
+          answer: value,
+          selection: this.currentSelection,
+        });
       }
 
       this.current += 1;
@@ -101,6 +107,7 @@ export default {
   },
   computed: {
     GetNumberOfInputs() {
+      console.log("input calculated")
       var inputs = this.answers.map((_, ind) => {
         return ind + 1;
       });
@@ -108,6 +115,14 @@ export default {
       // eslint-disable-next-line
       this.dropDownChoices = inputs;
       return this.dropDownChoices;
+    },
+    GetSelected() {
+      if (this.answers.length >= this.current) {
+        console.log("index", this.current - 1)
+        return this.answers[this.current - 1].answer;
+      } else {
+        return "";
+      }
     },
   }
 }
