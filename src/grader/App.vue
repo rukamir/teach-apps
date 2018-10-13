@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <div id="display-group">
-      <div class="display-changer" @click=decreaseDisplay><v-icon name="minus-square" scale="3" /></div>
-      <div id="display">{{questionTotal}}</div>
-      <div class="display-changer" @click=increaseDisplay><v-icon name="plus-square" scale="3" />
+      <div>
+        <div class="display-changer" @click=decreaseDisplay><v-icon name="minus-square" scale="3" /></div>
+        <div id="display">{{questionTotal}}</div>
+        <div class="display-changer" @click=increaseDisplay><v-icon name="plus-square" scale="3" /></div>
       </div>
+      <div class="subdisplay">Total Number of Problems</div>
     </div>
     <div id="answers-group">
-      <img alt="Vue logo" src="./assets/logo.png">
       <GradeList :total=questionTotal />
     </div>
   </div>
@@ -26,7 +27,7 @@ export default {
   },
   data() {
     return {
-      questionTotal: 40,
+      questionTotal: 15,
     };
   },
   methods: {
@@ -52,23 +53,26 @@ body {
   color: #2c3e50;
 }
 #answers-group {
-  padding-top: 15%;
+  padding-top: 100px;
 }
 #display-group {
   position: fixed;
   width: 100%;
-  height: 15%;
+  height: 100px;
   background-color: aquamarine;
 }
 #display {
-    display: inline-block;
-    max-width: 50%;
-    min-width: 30%;
-    font-size: 4em;
+  display: inline-block;
+  max-width: 50%;
+  min-width: 30%;
+  font-size: 3em;
+}
+.subdisplay {
+  font-size: 1em;
 }
 .display-changer {
-    display: inline-block;
-    max-width: 25%;
-    min-width: 20%;
+  display: inline-block;
+  max-width: 25%;
+  min-width: 20%;
 }
 </style>

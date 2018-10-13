@@ -1,13 +1,24 @@
 <template>
   <div>
-      <h6>Grade List view</h6>
-      <div v-for="(val, idx) in generateList()" :key="idx">
-        <span>{{`${idx} ${val}`}}</span>
-      </div>
+    <div class="grade-group" v-for="(val, idx) in generateList()" :key="idx">
+      <span class="count-wrong">{{ idx }}</span><span class="grade-value">{{ val }}</span>
+    </div>
   </div>
 </template>
 
 <style>
+.grade-group {
+  margin: 0.5em 0.5em 0.5em 0.5em;
+  font-size: 1.45em;
+}
+.count-wrong {
+  color: red;
+  margin-right: 0.75em;
+  font-weight: 1000;
+}
+.grade-value {
+  color: rgb(0, 192, 0);
+}
 </style>
 
 <script>
